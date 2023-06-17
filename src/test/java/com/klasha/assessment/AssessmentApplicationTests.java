@@ -1,4 +1,4 @@
-package com.klasha.assessment.assessment;
+package com.klasha.assessment;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
