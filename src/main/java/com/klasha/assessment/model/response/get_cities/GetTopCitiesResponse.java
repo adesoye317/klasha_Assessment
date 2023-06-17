@@ -1,4 +1,4 @@
-package com.klasha.assessment.model.get_cities.response;
+package com.klasha.assessment.model.response.get_cities;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
