@@ -1,9 +1,11 @@
 package com.klasha.assessment.controller;
 
 import com.klasha.assessment.model.request.get_cities.GetCityandStateRequest;
+import com.klasha.assessment.model.request.get_currency.GetCurrencyRequest;
 import com.klasha.assessment.model.request.get_details.GetDetailsRequest;
 import com.klasha.assessment.model.response.get_capital.GetCapitalResponse;
 import com.klasha.assessment.model.response.get_cities.GetTopCitiesResponse;
+import com.klasha.assessment.model.response.get_currency.GetCountryCurrencyResponse;
 import com.klasha.assessment.model.response.get_currency.GetCurrencyResponse;
 import com.klasha.assessment.model.response.get_details.GetDetailsResponse;
 import com.klasha.assessment.model.response.get_population.GetPopulationResponse;
@@ -29,6 +31,8 @@ public class MainController {
     private final GetDetailsService getDetailsService;
     private final GetCitiesandStateService getCitiesandStateService;
 
+    private final GetCountryCurrency getCountryCurrency;
+
     @GetMapping("/get-top/cities-desc")
     public ResponseEntity<GetTopCitiesResponse> getTopCities(@RequestParam int numberCities, @RequestParam String country){
         log.info("The request Param numberCities {} and country {}", numberCities, country);
@@ -42,5 +46,10 @@ public class MainController {
     @PostMapping("/getdetails/state-cities")
     public Object getStateandCities(@RequestBody GetDetailsRequest request){
         return  CompletableFuture.completedFuture(getCitiesandStateService.getDetails(request));
+    }
+
+    @PostMapping("/country/currency")
+    public ResponseEntity<GetCountryCurrencyResponse> getCurrency(@RequestBody GetCurrencyRequest request){
+        return  ResponseEntity.ok(getCountryCurrency.countryCurrency(request));
     }
 }
