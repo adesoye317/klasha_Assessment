@@ -1,9 +1,10 @@
-package com.klasha.assessment.service;
+package com.klasha.assessment.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.klasha.assessment.model.get_cities.request.GetTopCitiesRequest;
 import com.klasha.assessment.model.get_cities.response.GetTopCitiesResponse;
+import com.klasha.assessment.service.GetTopCitiesInterface;
 import com.klasha.assessment.util.http.HttpHeader;
 import com.klasha.assessment.util.http.HttpResponse;
 import com.klasha.assessment.util.http.HttpUtil;
@@ -24,11 +25,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class GetTopCitiesDescService {
+public class GetTopCitiesDescService implements GetTopCitiesInterface {
 
     private final Environment env;
     private final HttpUtil httpUtil;
 
+    @Override
     public GetTopCitiesResponse getTopCities(String numberCities, String country){
 
         GetTopCitiesResponse response = null;
