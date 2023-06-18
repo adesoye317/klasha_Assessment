@@ -7,22 +7,29 @@ import com.klasha.assessment.model.response.get_details.GetDetailsResponse;
 import com.klasha.assessment.model.response.get_details.Location;
 import com.klasha.assessment.model.response.get_population.GetPopulationResponse;
 import com.klasha.assessment.model.response.location.GetLocationResponse;
+import com.klasha.assessment.service.GetDetailInterface;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
 
+
+/**
+ * @author adegokeadesoye
+ * @apiNote This service is for Getting Details like location, currency, population and capital of a country
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class GetDetailsService {
+public class GetDetailsService implements GetDetailInterface {
 
     private final GetLocationService getLocationService;
     private final GetCurrencyDetailService getCurrencyDetailService;
     private final GetPopulationService getPopulationService;
     private final GetCapitalDetailService getCapitalDetailService;
 
+    @Override
     public CompletableFuture<GetDetailsResponse> getDetails(GetDetailsRequest request){
         GetDetailsResponse detailsResponse = null;
 

@@ -7,6 +7,7 @@ import com.klasha.assessment.model.response.city_state.GetStateandCitiesResponse
 import com.klasha.assessment.model.response.city_state.StateandCittiesResponse;
 import com.klasha.assessment.model.response.states.GetStateResponse;
 import com.klasha.assessment.model.response.states.StatesItem;
+import com.klasha.assessment.service.GetCitiesandStateInterface;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -16,15 +17,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+
+/**
+ * @author adegokeadesoye
+ * @apiNote This service is for Getting cities and states
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class GetCitiesandStateService {
+public class GetCitiesandStateService implements GetCitiesandStateInterface {
 
     private final GetStatesService getStatesService;
     private final GetCityService getCityService;
 
     @Async
+    @Override
     public CompletableFuture<GetStateandCitiesResponse> getDetails(GetDetailsRequest request){
         GetStateandCitiesResponse response = new GetStateandCitiesResponse();
         try {

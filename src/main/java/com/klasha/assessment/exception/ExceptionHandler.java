@@ -35,11 +35,11 @@ public class ExceptionHandler {
         return errorRes;
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.REQUEST_TIMEOUT)
     @org.springframework.web.bind.annotation.ExceptionHandler(RuntimeException.class)
     public Map<String, String> runTime(RuntimeException ex){
         Map<String, String> errorRes = new HashMap<>();
-        errorRes.put("responseMessage", "one of the request value is empty or you are sending a bad request");
+        errorRes.put("responseMessage", "Check Internet");
         errorRes.put("responseCode", "E97");
 
         return errorRes;

@@ -10,6 +10,9 @@ import com.klasha.assessment.model.response.get_currency.GetCurrencyResponse;
 import com.klasha.assessment.model.response.get_details.GetDetailsResponse;
 import com.klasha.assessment.model.response.get_population.GetPopulationResponse;
 import com.klasha.assessment.model.response.location.GetLocationResponse;
+import com.klasha.assessment.service.GetCitiesandStateInterface;
+import com.klasha.assessment.service.GetCountryCurrencyInterface;
+import com.klasha.assessment.service.GetDetailInterface;
 import com.klasha.assessment.service.GetTopCitiesInterface;
 import com.klasha.assessment.service.impl.*;
 import lombok.RequiredArgsConstructor;
@@ -28,11 +31,13 @@ import java.util.concurrent.CompletableFuture;
 public class MainController {
 
     private final GetTopCitiesInterface getTopCitiesInterface;
-    private final GetDetailsService getDetailsService;
-    private final GetCitiesandStateService getCitiesandStateService;
+    private final GetDetailInterface getDetailsService;
+    private final GetCitiesandStateInterface getCitiesandStateService;
+    private final GetCountryCurrencyInterface getCountryCurrency;
 
-    private final GetCountryCurrency getCountryCurrency;
 
+    //I am using one endpoint to take care of the three countries instead of creating a service for each country.
+    // So I am also passing country as a request parameter
     @GetMapping("/get-top/cities-desc")
     public ResponseEntity<GetTopCitiesResponse> getTopCities(@RequestParam int numberCities, @RequestParam String country){
         log.info("The request Param numberCities {} and country {}", numberCities, country);

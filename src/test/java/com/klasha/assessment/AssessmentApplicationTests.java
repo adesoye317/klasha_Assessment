@@ -12,10 +12,6 @@ class AssessmentApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	void GetCity() {
-		assertEquals("", "");
-	}
 
 
 }
