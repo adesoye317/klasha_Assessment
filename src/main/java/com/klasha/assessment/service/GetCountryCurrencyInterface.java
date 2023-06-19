@@ -6,4 +6,5 @@ import com.klasha.assessment.model.response.get_currency.GetCountryCurrencyRespo
 
 public interface GetCountryCurrencyInterface {
     GetCountryCurrencyResponse countryCurrency(GetCurrencyRequest request);
+    Object exchangeRate(GetCurrencyRequest request);
 }

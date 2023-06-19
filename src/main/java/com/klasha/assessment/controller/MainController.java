@@ -57,4 +57,9 @@ public class MainController {
     public ResponseEntity<GetCountryCurrencyResponse> getCurrency(@RequestBody GetCurrencyRequest request){
         return  ResponseEntity.ok(getCountryCurrency.countryCurrency(request));
     }
+
+    @PostMapping("/exchange-rate")
+    public ResponseEntity<Object> exchangeRate(@RequestBody GetCurrencyRequest request){
+        return  ResponseEntity.ok(getCountryCurrency.exchangeRate(request));
+    }
 }
